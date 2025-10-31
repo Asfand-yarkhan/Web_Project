@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -258,3 +259,265 @@
 </body>
 </html>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout - Language School</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Roboto, Arial, Helvetica, sans-serif; color: #172a6e; background: #FCFCFC; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; height: auto; display: block; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+  header { background: #ffffff; border-bottom: 1px solid #eee; }
+  .topbar { background: #202c5a; color: #a7afcd; font-size: 14px; }
+  .topbar .container { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; }
+  .brand { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; }
+  .brand img { height: 48px; }
+  .nav { font-weight: 500; display: flex; align-items: center; gap: 16px; }
+  .nav a { padding: 8px 10px; border-radius: 4px; color: #172a6e; }
+  .nav a:hover { background: #f0f4ff; }
+  .section { padding: 32px 0; }
+  h2 { margin: 0 0 16px; }
+  .grid { display: grid; gap: 20px; }
+  .grid.cols-2 { grid-template-columns: 2fr 1fr; }
+  .card { background: #fff; border: 1px solid #eee; border-radius: 6px; overflow: hidden; }
+  .pad { padding: 16px; }
+  label { display: block; margin-bottom: 6px; font-weight: 700; }
+  input, select, textarea { width: 100%; padding: 10px; border: 1px solid #d9d9d9; border-radius: 4px; font-family: inherit; }
+  .row { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+  .button { display: inline-block; background: #74c5f3; color: #fff; padding: 12px 16px; border-radius: 4px; text-align: center; }
+  .error { color: #d33; font-size: 12px; margin-top: 6px; }
+  .invalid { border-color: #d33; }
+  footer { background: #202c5a; color: #fff; margin-top: 24px; }
+  footer .widgets { padding: 24px 0; }
+  footer h4 { color: #fff; margin-bottom: 10px; }
+  footer p, footer li, footer a { color: #fff; }
+  footer .copy { border-top: 1px solid rgba(255,255,255,.1); padding: 12px 0; font-size: 14px; text-align: center; }
+  @media (max-width: 900px) { .grid.cols-2 { grid-template-columns: 1fr; } .row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+  <div id="Wrapper">
+    <div id="Header_wrapper" class="">
+      <header>
+        <div class="topbar">
+          <div class="container">
+            <div>Have any questions?</div>
+            <div>+61 383 766 284 · noreply@envato.com</div>
+          </div>
+        </div>
+        <div class="container brand">
+          <img src="https://themes.muffingroup.com/be/language/wp-content/uploads/2014/11/retina-languageschool.png" alt="Language School">
+          <nav class="nav">
+            <a href="poject.html">Home</a>
+            <a href="checkout.html">Checkout</a>
+          </nav>
+        </div>
+      </header>
+    </div>
+
+    <div class="section">
+      <div class="container">
+        <h2>Checkout</h2>
+        <div class="grid cols-2">
+          <div class="card">
+            <div class="pad">
+              <h3 style="margin-top:0;">Billing details</h3>
+              <form id="checkoutForm" novalidate>
+              <div class="row">
+                <div>
+                  <label for="firstName">First name</label>
+                  <input id="firstName" type="text" placeholder="John">
+                  <div class="error" data-error-for="firstName"></div>
+                </div>
+                <div>
+                  <label for="lastName">Last name</label>
+                  <input id="lastName" type="text" placeholder="Doe">
+                  <div class="error" data-error-for="lastName"></div>
+                </div>
+              </div>
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="john@example.com">
+              <div class="error" data-error-for="email"></div>
+              <label for="phone">Phone</label>
+              <input id="phone" type="tel" placeholder="+61 383 766 284">
+              <div class="error" data-error-for="phone"></div>
+              <label for="address">Address</label>
+              <input id="address" type="text" placeholder="Street, number">
+              <div class="error" data-error-for="address"></div>
+              <div class="row">
+                <div>
+                  <label for="city">City</label>
+                  <input id="city" type="text" placeholder="Melbourne">
+                  <div class="error" data-error-for="city"></div>
+                </div>
+                <div>
+                  <label for="zip">ZIP</label>
+                  <input id="zip" type="text" placeholder="3000">
+                  <div class="error" data-error-for="zip"></div>
+                </div>
+              </div>
+              <h3>Payment</h3>
+              <div class="row">
+                <div>
+                  <label for="cardNumber">Card number</label>
+                  <input id="cardNumber" type="text" placeholder="1234 5678 9012 3456">
+                  <div class="error" data-error-for="cardNumber"></div>
+                </div>
+                <div>
+                  <label for="cardName">Name on card</label>
+                  <input id="cardName" type="text" placeholder="John Doe">
+                  <div class="error" data-error-for="cardName"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div>
+                  <label for="expiry">Expiry</label>
+                  <input id="expiry" type="text" placeholder="MM/YY">
+                  <div class="error" data-error-for="expiry"></div>
+                </div>
+                <div>
+                  <label for="cvv">CVV</label>
+                  <input id="cvv" type="text" placeholder="123">
+                  <div class="error" data-error-for="cvv"></div>
+                </div>
+              </div>
+              <button class="button" type="submit" style="margin-top:12px;">Place order</button>
+              </form>
+            </div>
+          </div>
+          <div class="card">
+            <div class="pad">
+              <h3 style="margin-top:0;">Order summary</h3>
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span>Selected course</span>
+                <strong>$199</strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+                <span>Materials</span>
+                <strong>$29</strong>
+              </div>
+              <hr style="border:none;border-top:1px solid #eee;">
+              <div style="display:flex;justify-content:space-between;">
+                <strong>Total</strong>
+                <strong>$228</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="widgets">
+        <div class="container" style="display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));">
+          <div>
+            <h4>About us</h4>
+            <p>Vitae adipiscing turpis. Aenean ligula nibh in, molestie id viverra a, dapibus at dolor.</p>
+          </div>
+          <div>
+            <h4>Our offer</h4>
+            <ul style="margin:0; padding-left:18px;">
+              <li>Lorem ipsum ullamcorper ligula</li>
+              <li>Praesent commodo ligula</li>
+              <li>Pellentesque placerat vivamus</li>
+              <li>Nulla facilisi imperdiet</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Our address</h4>
+            <p>BeLanguage<br>Level 13, 2 Elizabeth St,<br>Melbourne, Victoria 3000<br>Australia</p>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <p>+61 383 766 284<br>noreply@envato.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="copy">
+        <div class="container">© 2025 Language School. All rights reserved.</div>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  (function($){
+    function setError(id, message){
+      var $input = $('#' + id);
+      $input.addClass('invalid');
+      $('[data-error-for="' + id + '"]').text(message || '');
+    }
+    function clearError(id){
+      var $input = $('#' + id);
+      $input.removeClass('invalid');
+      $('[data-error-for="' + id + '"]').text('');
+    }
+    function luhnCheck(number){
+      var str = (number || '').replace(/\D/g,'');
+      var sum = 0, alt = false;
+      for (var i = str.length - 1; i >= 0; i--) {
+        var n = parseInt(str.charAt(i), 10);
+        if (alt) { n *= 2; if (n > 9) n -= 9; }
+        sum += n; alt = !alt;
+      }
+      return str.length >= 13 && sum % 10 === 0;
+    }
+    function isFutureExpiry(mmYY){
+      var m = mmYY.match(/^(0[1-9]|1[0-2])\/(\d{2})$/);
+      if(!m) return false;
+      var month = parseInt(m[1],10);
+      var year = 2000 + parseInt(m[2],10);
+      var now = new Date();
+      var exp = new Date(year, month);
+      return exp > now;
+    }
+    $('#checkoutForm').on('submit', function(e){
+      e.preventDefault();
+      var ok = true;
+      var fields = ['firstName','lastName','email','phone','address','city','zip','cardNumber','cardName','expiry','cvv'];
+      fields.forEach(function(id){ clearError(id); });
+
+      function requireText(id, label){
+        var v = $.trim($('#' + id).val());
+        if(!v){ setError(id, label + ' is required'); ok = false; }
+        return v;
+      }
+      var first = requireText('firstName','First name');
+      var last = requireText('lastName','Last name');
+      var email = requireText('email','Email');
+      var phone = requireText('phone','Phone');
+      var address = requireText('address','Address');
+      var city = requireText('city','City');
+      var zip = requireText('zip','ZIP');
+      var cardNumber = requireText('cardNumber','Card number');
+      var cardName = requireText('cardName','Name on card');
+      var expiry = requireText('expiry','Expiry');
+      var cvv = requireText('cvv','CVV');
+
+      if(email && !/^\S+@\S+\.\S+$/.test(email)){ setError('email','Enter a valid email'); ok = false; }
+      if(phone && !/^[+\d][\d\s-]{6,}$/.test(phone)){ setError('phone','Enter a valid phone'); ok = false; }
+      if(zip && !/^\d{3,10}$/.test(zip)){ setError('zip','ZIP must be numeric'); ok = false; }
+      if(cardNumber && !luhnCheck(cardNumber)){ setError('cardNumber','Invalid card number'); ok = false; }
+      if(expiry && !isFutureExpiry(expiry)){ setError('expiry','Invalid expiry (MM/YY)'); ok = false; }
+      if(cvv && !/^\d{3,4}$/.test(cvv)){ setError('cvv','CVV must be 3 or 4 digits'); ok = false; }
+
+      if(ok){
+        alert('Order placed successfully!');
+      }
+    });
+  })(jQuery);
+</script>
+</html>
+</body>
+</html>
+
+>>>>>>> 3b6936eb27e756859f2e3bca3b83f46956f96922
