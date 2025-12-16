@@ -3,6 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 
 const app = express();
 const mainRoutes = require('./routes/mainRoutes');
@@ -19,7 +20,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // MongoDB Connection
-const uri = 'mongodb+srv://admin:123@cluster0.35hodnw.mongodb.net/?appName=Cluster0';
+const uri = process.env.MONGO_URI;
 mongoose.connect(uri)
     .then(() => console.log('Connected to MongoDB Atlas'))
     .catch(err => console.error('Error connecting to MongoDB:', err));

@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const Product = require('./models/Product');
+require('dotenv').config();
 
 const app = express();
 const port = 3000;
@@ -14,7 +15,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
 
 // Connection URI - MongoDB Atlas
-const uri = 'mongodb+srv://admin:123@cluster0.35hodnw.mongodb.net/?appName=Cluster0';
+const uri = process.env.MONGO_URI;
 
 mongoose.connect(uri)
   .then(() => console.log('Connected to MongoDB Atlas'))
