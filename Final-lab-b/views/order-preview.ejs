@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Order Preview</title>
+          <link rel="stylesheet" href="/css/style.css"> <!-- Assuming style.css exists -->
+          <style>
+                    body {
+                              font-family: 'Outfit', sans-serif;
+                              background: #0f172a;
+                              color: white;
+                              padding: 2rem;
+                    }
+
+                    .preview-card {
+                              background: rgba(255, 255, 255, 0.1);
+                              backdrop-filter: blur(10px);
+                              padding: 2rem;
+                              border-radius: 15px;
+                              max-width: 600px;
+                              margin: auto;
+                    }
+
+                    .item {
+                              display: flex;
+                              justify-content: space-between;
+                              border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                              padding: 0.5rem 0;
+                    }
+
+                    .total-box {
+                              margin-top: 2rem;
+                              border-top: 2px solid #6366f1;
+                              padding-top: 1rem;
+                    }
+
+                    .btn {
+                              padding: 10px 20px;
+                              border: none;
+                              border-radius: 5px;
+                              cursor: pointer;
+                              font-weight: bold;
+                    }
+
+                    .btn-confirm {
+                              background: #6366f1;
+                              color: white;
+                    }
+
+                    .btn-back {
+                              background: #475569;
+                              color: white;
+                    }
+
+                    input {
+                              padding: 8px;
+                              border-radius: 5px;
+                              border: none;
+                              width: 100%;
+                              margin: 10px 0;
+                    }
+          </style>
+</head>
+
+<body>
+          <div class="preview-card">
+                    <h1>Order Preview</h1>
+
+                    <div class="cart-items">
+                              <% cart.forEach(item=> { %>
+                                        <div class="item">
+                                                  <span>
+                                                            <%= item.name %> (x<%= item.quantity %>)
+                                                  </span>
+                                                  <span>$<%= item.price * item.quantity %></span>
+                                        </div>
+                                        <% }) %>
+                    </div>
+
+                    <div class="total-box">
+                              <div class="item"><span>Subtotal:</span> <span>$<%= total %></span></div>
+                              <div class="item" style="color: #ec4899;"><span>Discount:</span> <span>-$$<%= discount %>
+                                                            </span></div>
+                              <div class="item" style="font-size: 1.5rem; font-weight: bold;"><span>Grand Total:</span>
+                                        <span>$<%= finalTotal %></span></div>
+                    </div>
+
+                    <form action="/order/preview" method="GET" style="margin-top: 10px;">
+                              <input type="text" name="coupon" placeholder="Enter Coupon Code (e.g. SAVE10)">
+                              <button type="submit" class="btn btn-back">Apply Coupon</button>
+                    </form>
+
+                    <form action="/order/confirm" method="POST" style="margin-top: 20px;">
+                              <input type="email" name="email" placeholder="Enter your Email" required>
+                              <input type="hidden" name="coupon" value="<%= (discount > 0) ? 'SAVE10' : '' %>">
+                              <div style="display: flex; gap: 10px;">
+                                        <button type="submit" class="btn btn-confirm">Confirm Order</button>
+                                        <a href="/checkout" class="btn btn-back"
+                                                  style="text-decoration: none; text-align: center;">Go Back to Cart</a>
+                              </div>
+                    </form>
+          </div>
+</body>
+
+</html>

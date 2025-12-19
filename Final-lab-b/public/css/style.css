@@ -1,0 +1,162 @@
+/* ============================================
+   Language School - Main Stylesheet
+   ============================================ */
+
+/* Reset & Base Styles */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Roboto, Arial, Helvetica, sans-serif; color: #172a6e; background: #FCFCFC; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* Container */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+/* Action Bar (Top Contact Bar) */
+#Action_bar { background: #202c5a; color: #a7afcd; font-size: 14px; padding: 8px 0; }
+#Action_bar .container { display: flex; align-items: center; justify-content: space-between; }
+.contact_details { list-style: none; padding: 0; margin: 0; display: flex; gap: 20px; align-items: center; }
+.contact_details li { display: flex; align-items: center; gap: 6px; }
+.contact_details a { color: #a7afcd; }
+.social-menu { list-style: none; padding: 0; margin: 0; display: flex; gap: 16px; }
+.social-menu a { color: #a7afcd; padding: 4px 8px; }
+.social-menu a:hover { color: #fff; }
+
+/* Top Bar (Main Header) */
+#Top_bar { background: #fff; border-bottom: 1px solid #eee; padding: 16px 0; }
+#Top_bar .container { display: flex; align-items: center; justify-content: space-between; }
+.top_bar_left { display: flex; align-items: center; gap: 30px; flex: 1; }
+.logo img { height: 48px; }
+.menu_wrapper { flex: 1; display: flex; justify-content: flex-end; }
+#menu { list-style: none; padding: 0; margin: 0; }
+#menu ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 24px; align-items: center; }
+#menu li { display: inline-block; }
+#menu a { color: #172a6e; font-weight: 500; padding: 8px 0; display: inline-block; }
+#menu a:hover { color: #74c5f3; }
+.top_bar_right { display: flex; align-items: center; }
+.search_wrapper { position: relative; }
+.search_wrapper form { display: none; position: absolute; right: 0; top: 100%; background: #fff; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 100; }
+.search_wrapper.active form { display: block; }
+.search_wrapper input { padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; width: 250px; }
+
+/* Home Page Specific Header */
+header { background: #ffffff; border-bottom: 1px solid #eee; }
+.topbar { background: #202c5a; color: #a7afcd; font-size: 14px; }
+.topbar .container { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; }
+.brand { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; }
+.brand img { height: 48px; }
+.nav { font-weight: 500; display: flex; align-items: center; gap: 16px; }
+.nav a { padding: 8px 10px; border-radius: 4px; color: #172a6e; }
+.nav a:hover { background: #f0f4ff; }
+
+/* Subheader */
+#Subheader { background: #f7fbff; padding: 60px 0; text-align: center; }
+#Subheader h1 { margin: 0; font-size: 36px; font-weight: 300; }
+
+/* Hero Section */
+.hero { background: #fff; padding: 24px 0; text-align: center; }
+
+/* Sections */
+.section { padding: 40px 0; }
+.section.alt { background: #f7fbff; }
+.section.parallax { background-attachment: fixed; background-size: cover; background-position: center; position: relative; }
+.section.parallax::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.9); }
+.section.parallax > * { position: relative; z-index: 1; }
+
+/* Typography */
+h2 { font-weight: 700; margin: 0 0 16px; }
+h3, h4, h5 { margin: 0 0 12px; }
+p { margin: 0 0 12px; color: #364046; }
+
+/* Grid System */
+.grid { display: grid; gap: 20px; }
+.grid.cols-4 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.grid.cols-6 { grid-template-columns: repeat(6, 1fr); }
+
+/* Cards */
+.card { background: #fff; border: 1px solid #eee; border-radius: 6px; overflow: hidden; }
+.card .pad { padding: 16px; }
+.pad { padding: 16px; }
+
+/* Buttons */
+.button { display: inline-block; background: #74c5f3; color: #fff; padding: 12px 20px; border-radius: 4px; margin-top: 16px; }
+.button:hover { background: #469ccd; }
+.cta { background: #fcf6e3; padding: 40px 0; }
+.cta .container { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+/* Course Box */
+.course-box { background: #eff7fb; padding: 25px 40px 15px; border-left: 3px solid #47ade7; margin: 20px 0; }
+.course-box h2 { background: url(https://themes.muffingroup.com/be/language/wp-content/uploads/2014/11/home_language_h2_icon.png) left center no-repeat; padding-left: 40px; }
+.list_check { list-style: none; padding: 0; margin: 16px 0; }
+.list_check li { padding: 8px 0 8px 24px; position: relative; }
+.list_check li::before { content: '✓'; position: absolute; left: 0; color: #47ade7; font-weight: bold; }
+
+/* Language Items */
+.lang-item { text-align: center; }
+.lang-item img { margin: 0 auto 15px; }
+
+/* Levels */
+.levels { text-align: center; }
+
+/* Testimonials */
+.testimonials { background: #fff; }
+.testimonials h2 { text-align: center; }
+.testimonials-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: flex-start; }
+.testimonial-card { background: #fff; border: 1px solid #eee; border-radius: 10px; padding: 16px; display: flex; gap: 12px; align-items: flex-start; flex: 0 0 calc(33.333% - 20px); }
+.testimonial-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; background: #f0f4ff; }
+.testimonial-body { flex: 1; }
+.testimonial-name { font-weight: 700; margin-bottom: 6px; }
+.testimonial-text { color: #364046; font-size: 14px; }
+.stars { color: #f5a524; letter-spacing: 1px; font-size: 14px; margin-bottom: 6px; }
+.testimonial-card.hidden { display: none; }
+.testimonials .actions { text-align: center; margin-top: 12px; }
+.testimonials .toggle { display: inline-block; background: #74c5f3; color: #fff; padding: 8px 14px; border-radius: 4px; }
+
+/* Lessons Plan Tables */
+.month-header { background: #e0f0f8; padding: 15px; text-align: center; color: #172a6e; font-size: 18px; font-weight: 700; margin-bottom: 0; }
+.day-header { background: #e8ecf0; padding: 15px; color: #172a6e; font-weight: normal; font-size: 16px; margin: 20px 0 0 0; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+table thead th { background: #f3f5f7; padding: 12px; text-align: left; font-weight: 700; border-bottom: 2px solid #ddd; }
+table tbody td { padding: 12px; border-bottom: 1px solid #eee; }
+table tbody tr:nth-child(even) { background: #f9f9f9; }
+table tbody tr:hover { background: #f0f4ff; }
+table img { height: 20px; display: inline-block; vertical-align: middle; }
+
+/* Checkout Form */
+label { display: block; margin-bottom: 6px; font-weight: 700; }
+input, select, textarea { width: 100%; padding: 10px; border: 1px solid #d9d9d9; border-radius: 4px; font-family: inherit; }
+.row { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+.error { color: #d33; font-size: 12px; margin-top: 6px; }
+.invalid { border-color: #d33; }
+
+/* Footer */
+footer { background: #202c5a; color: #fff; margin-top: 24px; }
+footer .widgets { padding: 40px 0; }
+footer h4 { color: #fff; margin-bottom: 16px; }
+footer p, footer li, footer a { color: #fff; }
+footer .copy { border-top: 1px solid rgba(255,255,255,.1); padding: 20px 0; text-align: center; font-size: 14px; }
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .grid.cols-6 { grid-template-columns: repeat(3, 1fr); }
+  .grid.cols-2 { grid-template-columns: 1fr; }
+  #menu ul { flex-wrap: wrap; gap: 12px; }
+  .contact_details { flex-wrap: wrap; gap: 10px; }
+  table { font-size: 14px; }
+  table thead th, table tbody td { padding: 8px; }
+  .row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .grid.cols-6 { grid-template-columns: repeat(2, 1fr); }
+  .top_bar_left { flex-direction: column; gap: 16px; }
+  #menu ul { flex-direction: column; }
+  .topbar .container { flex-direction: column; gap: 6px; }
+  table { display: block; overflow-x: auto; }
+  .testimonial-card { flex: 0 0 calc(50% - 20px); }
+}
+
+@media (max-width: 599px) {
+  .testimonial-card { flex: 0 0 100%; }
+}
+

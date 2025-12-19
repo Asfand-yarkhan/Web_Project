@@ -3,6 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 require('dotenv').config();
 
 const app = express();
@@ -13,7 +14,12 @@ const Product = require('./models/Product'); // Ensure Product model exists
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({ extended: true })); // For form data if needed
+app.use(express.urlencoded({ extended: true }));
+app.use(session({
+    secret: 'secret-key', // In real app, use .env for this
+    resave: false,
+    saveUninitialized: true
+}));
 
 // Set view engine (From original project)
 app.set('view engine', 'ejs');
@@ -78,6 +84,8 @@ app.get('/', (req, res) => {
     res.render('index'); 
 });
 
+const orderRoutes = require('./routes/orderRoutes');
+app.use('/order', orderRoutes);
 app.use('/', mainRoutes);
 
 // Start server

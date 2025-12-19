@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+          <meta charset="UTF-8">
+          <title>Order Success</title>
+          <style>
+                    body {
+                              font-family: 'Outfit', sans-serif;
+                              background: #0f172a;
+                              color: white;
+                              text-align: center;
+                              padding: 5rem;
+                    }
+
+                    .success-box {
+                              background: rgba(255, 255, 255, 0.1);
+                              padding: 3rem;
+                              border-radius: 15px;
+                              display: inline-block;
+                    }
+
+                    .order-id {
+                              color: #6366f1;
+                              font-weight: bold;
+                    }
+          </style>
+</head>
+
+<body>
+          <div class="success-box">
+                    <h1 style="color: #4ade80;">Order Placed Successfully! 🎉</h1>
+                    <p>Thank you for your purchase.</p>
+                    <p>Order ID: <span class="order-id">#<%= order._id %></span></p>
+                    <p>Status: <span style="background: #334155; padding: 5px 10px; border-radius: 5px;">
+                                        <%= order.status %>
+                              </span></p>
+                    <br>
+                    <a href="/" style="color: white;">Back to Home</a>
+          </div>
+</body>
+
+</html>

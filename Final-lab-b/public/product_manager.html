@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Manager</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--light);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-weight: 600;
+            background: linear-gradient(to right, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
+            outline: none;
+            transition: 0.3s;
+            box-sizing: border-box;
+            /* Important for padding */
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-update {
+            background: #f59e0b;
+            color: black;
+            display: none;
+        }
+
+        .btn-cancel {
+            background: #64748b;
+            color: white;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* Product List */
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-height: 600px;
+            overflow-y: auto;
+            padding-right: 10px;
+            /* Space for scrollbar */
+        }
+
+        .product-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            /* Space between content and actions */
+            align-items: center;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .product-item:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .product-info h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .product-id {
+            font-size: 0.8rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #aaa;
+            margin-left: 10px;
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .btn-buy {
+            background: #4ade80;
+            color: black;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+
+        .btn-buy:hover {
+            background: #22c55e;
+            transform: scale(1.05);
+        }
+
+        .icon-btn {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ccc;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .icon-btn.delete:hover {
+            border-color: #ef4444;
+            color: #ef4444;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="/" class="back-link">← Back to Home</a>
+
+    <h1>Product Manager</h1>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="card">
+            <h2 style="margin-top: 0; margin-bottom: 1.5rem;">Add Product</h2>
+            <form id="productForm">
+                <div class="form-group">
+                    <label for="productId">Product ID (Unique Number)</label>
+                    <input type="number" id="productId" placeholder="e.g. 101" required>
+                </div>
+                <div class="form-group">
+                    <label for="productName">Name</label>
+                    <input type="text" id="productName" placeholder="Product Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="productDesc">Description</label>
+                    <textarea id="productDesc" rows="3" placeholder="Short description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="productCategories">Categories (comma separated)</label>
+                    <input type="text" id="productCategories" placeholder="Electronics, Gaming, etc.">
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="submitBtn">Add
+                    Product</button>
+                <button type="button" class="btn btn-update" id="updateBtn">Update
+                    Product</button>
+                <button type="button" class="btn btn-cancel" id="cancelBtn">Cancel</button>
+            </form>
+        </div>
+
+        <!-- List Section -->
+        <div class="card">
+            <h2 style="margin-top: 0; margin-bottom: 1.5rem;">Inventory</h2>
+            <div id="productList" class="product-list">
+                <!-- Products will be injected here -->
+                <p style="text-align: center; color: #666;">Loading products...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = '/api/products'; // Relative path now
+        const form = document.getElementById('productForm');
+        const listContainer = document.getElementById('productList');
+
+        // Buttons
+        const submitBtn = document.getElementById('submitBtn');
+        const updateBtn = document.getElementById('updateBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+
+        // Inputs
+        const idInput = document.getElementById('productId');
+        const nameInput = document.getElementById('productName');
+        const descInput = document.getElementById('productDesc');
+        const catInput = document.getElementById('productCategories');
+        const titleHeading = document.querySelector('.card h2');
+
+        let isEditing = false;
+
+        // Fetch and Display Products
+        async function fetchProducts() {
+            try {
+                const response = await fetch(API_URL);
+                const products = await response.json();
+                renderProducts(products);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+                listContainer.innerHTML = '<p style="color:red; text-align:center">Error connecting to server</p>';
+            }
+        }
+
+        function renderProducts(products) {
+            listContainer.innerHTML = '';
+            if (products.length === 0) {
+                listContainer.innerHTML = '<p style="text-align: center; color: #666;">No products found.</p>';
+                return;
+            }
+
+            products.forEach(product => {
+                const item = document.createElement('div');
+                item.className = 'product-item';
+
+                const categoriesHtml = product.categories.map(c => `<span class="tag">${c}</span>`).join('');
+
+                item.innerHTML = `
+                    <div class="product-info">
+                        <h3>${product.name} <span class="product-id">#${product.id}</span></h3>
+                        <div class="product-desc">${product.description}</div>
+                        <div class="tags">${categoriesHtml}</div>
+                    </div>
+                    <div class="actions">
+                                                <button class="btn-buy" onclick="buyProduct(${product.id})">Buy Now</button>
+                        <button class="icon-btn" onclick="editProduct(${product.id})" title="Edit">✎</button>
+                        <button class="icon-btn delete" onclick="deleteProduct(${product.id})" title="Delete">×</button>
+                    </div>
+                `;
+                listContainer.appendChild(item);
+            });
+        }
+
+        // Add / Update Product
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const product = {
+                id: idInput.value,
+                name: nameInput.value,
+                description: descInput.value,
+                categories: catInput.value.split(',').map(s => s.trim()).filter(s => s)
+            };
+
+            if (isEditing) {
+                // Update Logic
+                try {
+                    const res = await fetch(`${API_URL}/${product.id}`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(product)
+                    });
+                    if (res.ok) {
+                        resetForm();
+                        fetchProducts();
+                    } else {
+                        alert('Error updating product');
+                    }
+                } catch (err) { alert('Error: ' + err); }
+
+            } else {
+                // Create Logic
+                try {
+                    const res = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(product)
+                    });
+                    if (res.ok) {
+                        resetForm();
+                        fetchProducts();
+                    } else {
+                        const data = await res.json();
+                        alert('Error: ' + (data.error || 'Could not create'));
+                    }
+                } catch (err) { alert('Error: ' + err); }
+            }
+        });
+
+        // Buy Product (Add to cart and redirect)
+        window.buyProduct = async (id) => {
+            try {
+                const res = await fetch(`/order/add-to-cart/${id}`, { method: 'POST' });
+                if (res.ok) {
+                    window.location.href = '/order/preview';
+                } else {
+                    alert('Error adding to cart');
+                }
+            } catch (err) { alert('Error: ' + err); }
+        };
+
+        // Delete Product
+        window.deleteProduct = async (id) => {
+            if (!confirm(`Are you sure you want to delete product #${id}?`)) return;
+
+            try {
+                const res = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+                if (res.ok) fetchProducts();
+            } catch (err) { console.error(err); }
+        };
+
+        // Edit Product (Populate Form)
+        window.editProduct = (id) => {
+            fetch(API_URL).then(r => r.json()).then(products => {
+                const p = products.find(prod => prod.id == id);
+                if (p) {
+                    idInput.value = p.id;
+                    idInput.disabled = true; // Cannot change ID on update
+                    nameInput.value = p.name;
+                    descInput.value = p.description;
+                    catInput.value = p.categories.join(', ');
+
+                    setEditMode(true);
+                }
+            });
+        };
+
+        // UI Helpers
+        function setEditMode(enable) {
+            isEditing = enable;
+            if (enable) {
+                titleHeading.innerText = 'Edit Product';
+                submitBtn.style.display = 'none';
+                updateBtn.style.display = 'inline-block';
+                cancelBtn.style.display = 'inline-block';
+            } else {
+                titleHeading.innerText = 'Add Product';
+                submitBtn.style.display = 'inline-block';
+                updateBtn.style.display = 'none';
+                cancelBtn.style.display = 'none';
+                idInput.disabled = false;
+            }
+        }
+
+        function resetForm() {
+            form.reset();
+            setEditMode(false);
+        }
+
+        updateBtn.onclick = () => form.dispatchEvent(new Event('submit')); // Trigger submit handler
+        cancelBtn.onclick = resetForm;
+
+        // Initialize
+        fetchProducts();
+
+    </script>
+</body>
+
+</html>

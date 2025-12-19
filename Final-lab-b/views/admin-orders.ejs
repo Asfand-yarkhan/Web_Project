@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+          <meta charset="UTF-8">
+          <title>Admin - Manage Orders</title>
+          <style>
+                    body {
+                              font-family: 'Outfit', sans-serif;
+                              background: #0f172a;
+                              color: white;
+                              padding: 2rem;
+                    }
+
+                    table {
+                              width: 100%;
+                              border-collapse: collapse;
+                              background: rgba(255, 255, 255, 0.05);
+                              border-radius: 10px;
+                              overflow: hidden;
+                    }
+
+                    th,
+                    td {
+                              padding: 15px;
+                              text-align: left;
+                              border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                    }
+
+                    th {
+                              background: #1e293b;
+                              color: #6366f1;
+                    }
+
+                    .btn-update {
+                              background: #4ade80;
+                              color: black;
+                              border: none;
+                              padding: 5px 10px;
+                              border-radius: 4px;
+                              cursor: pointer;
+                    }
+          </style>
+</head>
+
+<body>
+          <h1>Admin: Order Management</h1>
+          <table>
+                    <thead>
+                              <tr>
+                                        <th>Order ID</th>
+                                        <th>Email</th>
+                                        <th>Total</th>
+                                        <th>Current Status</th>
+                                        <th>Action</th>
+                              </tr>
+                    </thead>
+                    <tbody>
+                              <% orders.forEach(order=> { %>
+                                        <tr>
+                                                  <td>
+                                                            <%= order._id %>
+                                                  </td>
+                                                  <td>
+                                                            <%= order.customerEmail %>
+                                                  </td>
+                                                  <td>$<%= order.finalAmount %>
+                                                  </td>
+                                                  <td>
+                                                            <span
+                                                                      style="color: <%= order.status === 'Delivered' ? '#4ade80' : '#facc15' %>">
+                                                                      <%= order.status %>
+                                                            </span>
+                                                  </td>
+                                                  <td>
+                                                            <% if (order.status==='Placed' ) { %>
+                                                                      <form action="/order/admin/update-status"
+                                                                                method="POST">
+                                                                                <input type="hidden" name="orderId"
+                                                                                          value="<%= order._id %>">
+                                                                                <input type="hidden" name="newStatus"
+                                                                                          value="Processing">
+                                                                                <button type="submit"
+                                                                                          class="btn-update">Mark as
+                                                                                          Processing</button>
+                                                                      </form>
+                                                                      <% } else if (order.status==='Processing' ) { %>
+                                                                                <form action="/order/admin/update-status"
+                                                                                          method="POST">
+                                                                                          <input type="hidden"
+                                                                                                    name="orderId"
+                                                                                                    value="<%= order._id %>">
+                                                                                          <input type="hidden"
+                                                                                                    name="newStatus"
+                                                                                                    value="Delivered">
+                                                                                          <button type="submit"
+                                                                                                    class="btn-update">Mark
+                                                                                                    as
+                                                                                                    Delivered</button>
+                                                                                </form>
+                                                                                <% } else { %>
+                                                                                          Completed
+                                                                                          <% } %>
+                                                  </td>
+                                        </tr>
+                                        <% }) %>
+                    </tbody>
+          </table>
+          <br>
+          <a href="/" style="color: grey;">Back to Home</a>
+</body>
+
+</html>
